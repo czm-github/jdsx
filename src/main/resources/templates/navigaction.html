@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>导航栏</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/css/jdsx.css">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+
+</head>
+<body>
+<div th:fragment="nav">
+    <!--<div class="navbar-collapse collapse" style="text-align: center;">
+        <ul class="nav navbar-nav" style="display: inline-block;float: none;">
+            <li class="">
+                <a href="#">首页</a>
+            </li>
+            <li class="">
+                <a href="#">加入我们</a>
+            </li>
+            <li class="">
+                <a href="#">联系我们</a>
+            </li>
+        </ul>
+    </div>-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header nav-top-margin">
+                <div class="navbar-header nav-top-margin">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only"></span>
+                        <span class="glyphicon glyphicon-menu-hamburger"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="text-align: center;">
+                <ul class="nav navbar-nav" style="display: inline-block;float: none;">
+                    <li><a href="/"><span class="glyphicon glyphicon-home"></span>首页</a></li>
+                    <!--<li><a>汪，欢迎来到地沟商城</a></li>-->
+                    <li th:if="${session.user == null}">
+                        <a th:href="@{https://github.com/login/oauth/authorize(client_id='ef177563cf41b03c075d',redirect_uri=${#httpServletRequest.getRequestURL()+'callback'},scope='user',state=1)}">请登录</a>
+                    </li>
+                    <li><a href="/">我的订单</a></li>
+                    <li><a href="/"><span class="glyphicon glyphicon-shopping-cart" ></span> 我的购物车 <span class="badge">0</span></a></li>
+                    <form class="navbar-form navbar-left" action="/" method="get">
+                        <!--<ul class="nav nav-pills navbar-left nav-top-margin">
+                            <li class="li-length active"><a href="/">推荐</a></li>
+                        </ul>&nbsp;-->
+                        <div class="input-group nav-top-margin">
+                            <input type="text" class="form-control" name="search" placeholder="请输入问题关键字">
+                            <div class="input-group-btn">
+                                <!-- Buttons -->
+                                <button class="btn btn-default" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+</body>
