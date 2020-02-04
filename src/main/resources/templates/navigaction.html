@@ -39,11 +39,21 @@
                 <ul class="nav navbar-nav" style="display: inline-block;float: none;">
                     <li><a href="/"><span class="glyphicon glyphicon-home"></span>首页</a></li>
                     <!--<li><a>汪，欢迎来到地沟商城</a></li>-->
+                    <li class="dropdown" th:if="${session.user != null}">
+                        <a href="#" class="dropdown-toggle nav-top-margin" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span th:text="${session.user.getName()}"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/profile/questions">我的问题</a></li>
+                            <li><a href="/logout">退出登录</a></li>
+                        </ul>
+                    </li>
                     <li th:if="${session.user == null}">
-                        <a th:href="@{https://github.com/login/oauth/authorize(client_id='ef177563cf41b03c075d',redirect_uri=${#httpServletRequest.getRequestURL()+'callback'},scope='user',state=1)}">请登录</a>
+                        <a href="https://github.com/login/oauth/authorize?client_id=1246a1f68a3aceba556c&redirect_uri=http://localhost:8080/callback&scope=user&state=1">请登录</a>
                     </li>
                     <li><a href="/">我的订单</a></li>
-                    <li><a href="/"><span class="glyphicon glyphicon-shopping-cart" ></span> 我的购物车 <span class="badge">0</span></a></li>
+                    <li><a href="/"><span class="glyphicon glyphicon-shopping-cart" ></span> 我的购物车dsfds <span class="badge">0</span></a></li>
                     <form class="navbar-form navbar-left" action="/" method="get">
                         <!--<ul class="nav nav-pills navbar-left nav-top-margin">
                             <li class="li-length active"><a href="/">推荐</a></li>
